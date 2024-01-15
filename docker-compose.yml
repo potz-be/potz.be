@@ -35,8 +35,49 @@ services:
     networks:
       main:
     volumes:
-      - '~/volumes/traefik:/letsencrypt'
+      - '$HOME/volumes/traefik:/letsencrypt'
       - '/var/run/docker.sock:/var/run/docker.sock:ro'
+
+  umami:
+    image: ghcr.io/umami-software/umami:postgresql-latest
+    environment:
+      DATABASE_URL: postgresql://umami:S6zG3mfUVsaLNADvCGgeW5Gf4JvE4cqWgb7WYTZPi3xujwhxW@umami_postgres:5432/umami
+      DATABASE_TYPE: postgresql
+      APP_SECRET: Xjao33PYrysM7uJJ65mf55KnhMpGGgwA7z9A5WNLSVVJy3HV2
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl http://localhost:3000/api/heartbeat"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.potz.rule=Host(`analytics.potz.be`)'
+      - 'traefik.http.routers.potz.entrypoints=websecure'
+      - 'traefik.http.routers.potz.tls.certresolver=letsencrypt'
+      - 'traefik.http.services.potz.loadbalancer.server.port=3000'
+    restart: always
+    networks:
+      main:
+
+  umami_postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: S6zG3mfUVsaLNADvCGgeW5Gf4JvE4cqWgb7WYTZPi3xujwhxW
+    volumes:
+      - $HOME/volumes/umami:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      main:
 
   potz:
     container_name: potz
@@ -49,7 +90,7 @@ services:
       main:
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.potz.rule=Host(`potz.be`,`www.potz.be`)'
+      - 'traefik.http.routers.potz.rule=host(`potz.be`,`www.potz.be`)'
       - 'traefik.http.routers.potz.entrypoints=websecure'
       - 'traefik.http.routers.potz.tls.certresolver=letsencrypt'
       - 'traefik.http.services.potz.loadbalancer.server.port=3000'
