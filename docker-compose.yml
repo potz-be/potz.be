@@ -55,7 +55,7 @@ services:
       - 'traefik.http.routers.web.rule=PathPrefix(`/`)'
       - 'traefik.http.routers.web.entrypoints=websecure'
       - 'traefik.http.routers.web.tls.certresolver=letsencrypt'
-      - 'traefik.http.services.web.loadbalancer.server.port=80'
+      - 'traefik.http.services.web.loadbalancer.server.port=3000'
     restart: always
 
 networks:
