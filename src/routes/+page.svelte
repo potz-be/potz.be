@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-4 justify-center items-center w-screen h-screen">
+<div class="flex flex-col gap-4 justify-center items-center w-screen h-screen-safe">
 	<img src="/potz.png" class="w-24 h-24" alt="POTZ logo" />
 	<p class="opacity-80">Onze website wordt momenteel aangepast.</p>
 	<a href="https://topradio.be" id="topradio-link">
