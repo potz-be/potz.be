@@ -8,6 +8,11 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+	interface Window {
+		umami: null | {
+			track: (string) => void;
+		};
+	}
 }
 
 export {};
