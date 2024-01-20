@@ -75,14 +75,6 @@
 	}
 </script>
 
-<svelte:head>
-	<title>POTZ - Music is Love</title>
-	<meta
-		name="description"
-		content="Steengoede dancemuziek, 24/7. POTZ is je nieuwe radiogezel op elk moment van de dag. Beluister ons online. Enjoy the ride."
-	/>
-</svelte:head>
-
 <div class="flex flex-col gap-4 justify-center items-center w-screen h-screen-safe overflow-clip">
 	<img src="/potz.png" class="w-32 h-32" alt="POTZ logo" />
 	<p class="opacity-80 text-sm">Onze website wordt momenteel aangepast.</p>
