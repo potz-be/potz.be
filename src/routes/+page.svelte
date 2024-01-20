@@ -75,6 +75,12 @@
 	}
 </script>
 
+<svelte:head>
+	<link rel="preconnect" href="https://playerservices.streamtheworld.com" />
+	<link rel="preconnect" href="https://api.topradio.be" />
+	<link rel="preconnect" href="https://analytics.potz.be" />
+</svelte:head>
+
 <div class="flex flex-col gap-4 justify-center items-center w-screen h-screen overflow-clip">
 	<img src="/potz.png" class="w-32 h-32" alt="POTZ logo" />
 	<p class="opacity-80 text-sm">Onze website wordt momenteel aangepast.</p>
