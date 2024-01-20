@@ -75,7 +75,7 @@
 	}
 </script>
 
-<div class="flex flex-col gap-4 justify-center items-center w-screen h-screen-safe overflow-clip">
+<div class="flex flex-col gap-4 justify-center items-center w-screen h-screen overflow-clip">
 	<img src="/potz.png" class="w-32 h-32" alt="POTZ logo" />
 	<p class="opacity-80 text-sm">Onze website wordt momenteel aangepast.</p>
 	<div id="player" class="flex gap-4 items-center w-[300px]">
@@ -100,6 +100,10 @@
 <style lang="postcss">
 	:root {
 		@apply bg-neutral-900 text-white;
+	}
+
+	.h-screen {
+		height: calc(100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom)));
 	}
 
 	#player {

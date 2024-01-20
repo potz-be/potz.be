@@ -1,5 +1,5 @@
 <div
-	class="flex flex-col gap-4 items-center justify-center h-screen-safe w-screen bg-neutral-900 text-white"
+	class="flex flex-col gap-4 items-center justify-center h-screen w-screen bg-neutral-900 text-white"
 >
 	<img src="/potz.png" class="w-32 h-32" alt="POTZ logo" />
 	<p class="opacity-80 text-sm">Er is een fout opgetreden.</p>
@@ -10,3 +10,9 @@
 		</div>
 	</a>
 </div>
+
+<style lang="postcss">
+	.h-screen {
+		height: calc(100vh - (env(safe-area-inset-top) + env(safe-area-inset-bottom)));
+	}
+</style>
