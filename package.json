@@ -46,6 +46,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sentry/sveltekit": "^7.94.1",
 		"howler": "^2.2.4",
 		"tailwindcss-safe-area": "^0.4.1"
 	}
