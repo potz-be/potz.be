@@ -47,7 +47,7 @@
 		navigator.mediaSession.metadata = new MediaMetadata({
 			title: data.title,
 			artist: data.artist,
-			artwork: [{ src: data.album_art }]
+			artwork: [{ src: data.album_art ?? '/placeholder.png' }]
 		});
 
 		// Schedule function.
@@ -85,7 +85,7 @@
 	<img src="/potz.png" class="w-32 h-32" alt="POTZ logo" />
 	<p class="opacity-80 text-sm">Onze website wordt momenteel aangepast.</p>
 	<div id="player" class="flex gap-4 items-center w-[300px]">
-		<img class="h-16 w-16 shrink-0" src={data.album_art} alt="Album Art" />
+		<img class="h-16 w-16 shrink-0" src={data.album_art ?? '/placeholder.png'} alt="Album Art" />
 		<div class="shrink overflow-hidden truncate">
 			<p class="opacity-75 text-xs">{data.artist}</p>
 			<p class="text-sm">{data.title}</p>
@@ -100,6 +100,29 @@
 				<Moon color="#ffffff" size="20" unit="px" />
 			</div>
 		{/if}
+	</div>
+	<div class="flex items-center gap-4">
+		<a
+			href="https://instagram.com/potz.music.is.love"
+			target="_blank"
+			rel="noopener noreferrer"
+			data-umami-event="Visit Instagram"
+		>
+			<i class="bi bi-instagram" />
+		</a>
+
+		<a
+			href="https://www.facebook.com/www.potz.be/"
+			data-umami-event="Visit Facebook"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<i class="bi bi-facebook" />
+		</a>
+
+		<a href="mailto:hello@potz.be" data-umami-event="Send email">
+			<i class="bi bi-envelope-at-fill" />
+		</a>
 	</div>
 </div>
 
